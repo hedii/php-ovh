@@ -52,7 +52,7 @@ class Api
      *
      * @var array
      */
-    private $endpoints = [
+    protected $endpoints = [
         'ovh-eu'        => 'https://eu.api.ovh.com/1.0',
         'ovh-ca'        => 'https://ca.api.ovh.com/1.0',
         'ovh-us'        => 'https://api.us.ovhcloud.com/1.0',
@@ -68,42 +68,42 @@ class Api
      *
      * @var string
      */
-    private $endpoint = null;
+    protected $endpoint = null;
 
     /**
      * Contain key of the current application
      *
      * @var string
      */
-    private $application_key = null;
+    protected $application_key = null;
 
     /**
      * Contain secret of the current application
      *
      * @var string
      */
-    private $application_secret = null;
+    protected $application_secret = null;
 
     /**
      * Contain consumer key of the current application
      *
      * @var string
      */
-    private $consumer_key = null;
+    protected $consumer_key = null;
 
     /**
      * Contain delta between local timestamp and api server timestamp
      *
      * @var string
      */
-    private $time_delta = null;
+    protected $time_delta = null;
 
     /**
      * Contain http client connection
      *
      * @var Client
      */
-    private $http_client = null;
+    protected $http_client = null;
 
     /**
      * Construct a new wrapper instance
@@ -165,7 +165,7 @@ class Api
      * @throws \GuzzleHttp\Exception\ClientException if http request is an error
      * @return int
      */
-    private function calculateTimeDelta()
+    protected function calculateTimeDelta()
     {
         if (!isset($this->time_delta)) {
             $response         = $this->rawCall(
@@ -313,7 +313,7 @@ class Api
      *
      * @return array
      */
-    private function decodeResponse(Response $response)
+    protected function decodeResponse(Response $response)
     {
         return json_decode($response->getBody(), true);
     }
